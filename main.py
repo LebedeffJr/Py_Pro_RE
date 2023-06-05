@@ -1,4 +1,3 @@
-from pprint import pprint
 ## Читаем адресную книгу в формате CSV в список contacts_list:
 import csv
 import re
