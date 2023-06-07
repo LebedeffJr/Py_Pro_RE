@@ -43,20 +43,25 @@ def remove_duplicates():
         if key not in person_dict:
             person_dict[key] = person
         else:
-            for last_name, values in person_dict.items():
-                while '' in values:
-                    values.remove('')
+            i = 0
+            for el in person:
+                if el not in person_dict[key]:
+                    person_dict[key].insert(i, el)
+                i += 1
+
     final_list = [desired_format[0]]
     for k, w in person_dict.items():
         final_list.append(w)
     return final_list
+
 if __name__ == '__main__':
+
     ph_num_f()
     contacts_list = remove_duplicates()
 ## 2. Сохраните получившиеся данные в другой файл.
 ## Код для записи файла в формате CSV:
-with open("phonebook.csv", "w", encoding='utf8') as f:
-    datawriter = csv.writer(f, delimiter=',')
+    with open("phonebook.csv", "w", encoding='utf8') as f:
+        datawriter = csv.writer(f, delimiter=',')
 
 ## Вместо contacts_list подставьте свой список:
-    datawriter.writerows(contacts_list)
+        datawriter.writerows(contacts_list)
